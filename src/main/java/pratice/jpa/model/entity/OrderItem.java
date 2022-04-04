@@ -1,12 +1,12 @@
 package pratice.jpa.model.entity;
 
-import lombok.Data;
+import pratice.jpa.model.entity.item.Item;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_item")
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id
     @GeneratedValue

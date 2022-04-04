@@ -8,11 +8,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #parameter
+    #      naming:
+#        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy #underscore
     properties:
       show_sql: true
       format_sql: true
       use_sql_comment: true
       default_batch_fetch_size: 100
+    database-platform: org.hibernate.dialect.H2Dialect
 
 logging:
   level:

@@ -1,5 +1,7 @@
 package pratice.jpa.model.entity;
 
+import pratice.jpa.model.entity.item.Item;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
