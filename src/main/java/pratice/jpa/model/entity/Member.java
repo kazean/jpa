@@ -12,12 +12,17 @@ public class Member extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
-
     private String name;
+    @Embedded
+    private Address address;
 
-    private String city;
+    public Address getAddress() {
+        return address;
+    }
 
-    private String zipcode;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     @OneToMany(mappedBy = "member")
     List<Order> orders = new ArrayList<>();
@@ -36,22 +41,6 @@ public class Member extends BaseEntity{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 
     public List<Order> getOrders() {

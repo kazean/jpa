@@ -9,15 +9,22 @@ public class Delivery extends BaseEntity {
     @Column(name = "delivery_id")
     private Long id;
 
-    private String street;
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @Enumerated(value = EnumType.STRING)
     private DeliveryStatus status;
 
-    @OneToOne(mappedBy = "delivery")
-    private Order order;
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -25,22 +32,6 @@ public class Delivery extends BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 
     public DeliveryStatus getStatus() {
