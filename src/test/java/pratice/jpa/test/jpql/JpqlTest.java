@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import pratice.jpa.test.entity.item.Item;
 import pratice.jpa.test.jpql.dto.PracUserDTO;
 import pratice.jpa.test.jpql.entity.*;
 
@@ -210,6 +211,20 @@ public class JpqlTest {
         PracOrder pracOrder2 = em.find(PracOrder.class, 5L);
         assertThat(pracMember.getPracOrders()).containsExactly(pracOrder1, pracOrder2);
     }*/
+
+    @Test
+    void polymorphismType() {
+        String jpql = "SELECT i FROM Item i WHERE type(i) IN (Book, Movie)";
+        List<Item> resultList = em.createQuery(jpql, Item.class)
+                .getResultList();
+    }
+
+    @Test
+    void polymorphismTreat() {
+        String jqpl = "SELECT i FROM Item i WHERE treat(i as Book).author = 'kim'";
+        List<Item> resultList = em.createQuery(jqpl, Item.class)
+                .getResultList();
+    }
 
 
 }
